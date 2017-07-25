@@ -1,0 +1,217 @@
+id: "adx001"
+label: "adx001"
+version: "1.0.0"
+author_link: "https://adxkaihatu.movabletype.io/"
+author_name: "開発テスト"
+description: "adx001"
+class: "blog"
+elements:
+  blog_static_files:
+    component: '~'
+    data:
+      - images
+      - js
+    importer: blog_static_files
+  custom_fields:
+    component: commercial
+    data:
+      banner_sort:
+        default: ''
+        description: バナー画像の並び順をコントロールします。表示しない場合は0、数字が小さい方が上に表示されます。
+        name: バナー画像の表示と並び順
+        obj_type: asset
+        options: 0,1,2,3
+        required: 0
+        type: select
+      banner_url:
+        default: ''
+        description: ''
+        name: バナー画像の飛び先のURL
+        obj_type: asset
+        options: ''
+        required: 0
+        type: url
+      entry_pickup:
+        default: 0
+        description: トップページ中央のPICKUP オススメ部分に表示する場合にチェックを入れます。
+        name: ピックアップ
+        obj_type: post
+        options: ''
+        required: 0
+        type: checkbox
+      folder_top:
+        default: 0
+        description: フォルダ配下のウェブページ一覧を表示する、フォルダのトップページに設定します。
+        name: フォルダのトップページにする
+        obj_type: page
+        options: ''
+        required: 0
+        type: checkbox
+      footer_menu:
+        default: 0
+        description: フッターメニューだけに表示するウェブページの場合にチェックを入れます。
+        name: フッターメニューにのみ表示
+        obj_type: page
+        options: ''
+        required: 0
+        type: checkbox
+      main_image:
+        default: ''
+        description: 記事一覧やOGPイメージなどで利用されるメインイメージを指定します。
+        name: メインイメージ
+        obj_type: post
+        options: ''
+        required: 0
+        type: asset_image
+      main_image_entry:
+        default: ''
+        description: 記事のサムネイルやog:imageとして表示させる画像です。
+        name: メインイメージ（記事）
+        obj_type: post
+        options: ''
+        required: 0
+        type: asset_image
+      main_image_page:
+        default: ''
+        description: ウェブページのサムネイルやog:imageとして表示させる画像です。
+        name: メインイメージ（ウェブページ）
+        obj_type: page
+        options: ''
+        required: 0
+        type: asset_image
+      main_image_top:
+        default: 0
+        description: トップページのメインバナーとして設定します。
+        name: トップページメインバナー
+        obj_type: asset
+        options: ''
+        required: 0
+        type: checkbox
+      navi_on:
+        default: 0
+        description: チェックを入れると、ページナビゲーションに表示されます。
+        name: このページをナビに表示させる
+        obj_type: page
+        options: ''
+        required: 0
+        type: checkbox
+      related_news:
+        default: ''
+        description: ページに関連する特定のカテゴリのニュースを表示します。
+        name: 関連ニュースを表示
+        obj_type: page
+        options: なし
+        required: 0
+        type: select
+      top_webpages:
+        default: 0
+        description: フォルダに属していてトップページに表示させたい場合にチェックします。
+        name: トップページに表示
+        obj_type: page
+        options: ''
+        required: 0
+        type: checkbox
+      webpage_top:
+        default: 0
+        description: トップページに表示するウェブページを指定します
+        name: トップページに表示（ウェブページ）
+        obj_type: page
+        options: ''
+        required: 0
+        type: checkbox
+    importer: custom_fields
+  template_set:
+    component: core
+    data:
+      base_path: templates
+      templates:
+        archive:
+          category_entry_listing:
+            filename: category_entry_listing.mtml
+            label: カテゴリ別記事リスト
+            mappings:
+              category:
+                archive_type: Category
+                file_template: "%-c/%i"
+                preferred: 1
+          yearly_entry_listing:
+            filename: yearly_entry_listing.mtml
+            label: 年別ブログ記事リスト
+            mappings:
+              yearly:
+                archive_type: Yearly
+                file_template: "%y/%i"
+                preferred: 1
+        index:
+          feed_recent:
+            filename: atom.xml.mtml
+            label: 最新記事のフィード
+            outfile: atom.xml
+            rebuild_me: 1
+          index_page:
+            filename: index.html.mtml
+            label: インデックスページ
+            outfile: index.html
+            rebuild_me: 1
+          main_index:
+            filename: news.html.mtml
+            label: ニュース TOP
+            outfile: news.html
+            rebuild_me: 1
+          styles:
+            filename: styles.css.mtml
+            label: スタイルシート
+            outfile: styles.css
+            rebuild_me: 1
+        individual:
+          entry:
+            filename: entry.mtml
+            label: 記事
+            mappings:
+              individual:
+                archive_type: Individual
+                file_template: "%y/%m/%-f"
+                preferred: 1
+        module:
+          blog-sidemenu:
+            filename: blog-sidemenu.mtml
+            label: blog-sidemenu
+          common_bottom_js:
+            filename: common_bottom_js.mtml
+            label: common_bottom_js
+          common_head_js:
+            filename: common_head_js.mtml
+            label: common_head_js
+          common_stylesheet:
+            filename: common_stylesheet.mtml
+            label: common_stylesheet
+          config:
+            filename: config.mtml
+            label: config
+          entry-list:
+            filename: entry-list.mtml
+            label: entry-list
+          footer:
+            filename: footer.mtml
+            label: footer
+          header:
+            filename: header.mtml
+            label: header
+          social_button:
+            filename: social_button.mtml
+            label: social-button
+        page:
+          page:
+            filename: page.mtml
+            label: ウェブページ
+            mappings:
+              page:
+                archive_type: Page
+                file_template: "%-c/%-f"
+                preferred: 1
+        system:
+          404_error:
+            filename: 404_error.mtml
+            label: 404 エラー
+    importer: template_set
+
