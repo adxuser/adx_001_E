@@ -1,133 +1,105 @@
 <!DOCTYPE html><$mt:Include module="config" strip_linefeeds="1"$>
-<html lang="<$mt:BlogLanguage$>" itemscope itemtype="http://schema.org/WebPage">
-<head>
+<html lang="<$mt:BlogLanguage$>">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
 <meta charset="<$mt:PublishCharset$>">
-<title><$mt:BlogName encode_html="1"$></title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="<$mt:BlogDescription remove_html="1" encode_html="1"$>">
 <meta name="keywords" content="<$mt:GetVar name="meta_keywords"$>">
-<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><$mt:BlogName encode_html="1"$></title>
 <link rel="shortcut icon" href="<$mt:BlogURL encode_html="1"$>images/favicon.ico">
 <link rel="start" href="<$mt:BlogURL encode_html="1"$>">
 <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="<$mt:Link template="feed_recent"$>">
 <$mt:CanonicalLink$>
 <!-- Open Graph Protocol -->
-<meta property="og:type" content="website">
 <meta property="og:locale" content="<$mt:BlogLanguage setvar="blog_lang"$><mt:If name="blog_lang" eq="ja">ja_JP<mt:Else><$mt:Var name="blog_lang"$></mt:If>">
 <meta property="og:title" content="<$mt:BlogName encode_html="1"$>">
+<meta property="og:type" content="website">
 <meta property="og:url" content="<$mt:BlogURL encode_html="1"$>">
+<meta property="og:image" content="<$mt:BlogURL encode_html="1"$>images/ogimage.jpg">
 <meta property="og:description" content="<$mt:BlogDescription remove_html="1" encode_html="1"$>">
 <meta property="og:site_name" content="<$mt:BlogName encode_html="1"$>">
-<meta property="og:image" content="<$mt:BlogURL encode_html="1"$>images/ogimage.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@<$mt:Var name='twitterVia'$>">
 <meta name="twitter:title" content="<$mt:BlogName encode_html="1"$>">
 <meta name="twitter:description" content="<$mt:BlogDescription remove_html="1" encode_html="1"$>">
-<meta name="twitter:image" content="<$mt:BlogURL encode_html="1"$>images/ogimage.png">
+<meta name="twitter:image" content="<$mt:BlogURL encode_html="1"$>images/ogimage.jpg">
 <!-- Microdata -->
 <meta itemprop="description" content="<$mt:BlogDescription remove_html="1" encode_html="1"$>">
 <link itemprop="url" href="<$mt:BlogURL encode_html="1"$>">
-<link itemprop="image" href="<$mt:BlogURL encode_html="1"$>images/ogimage.png">
-<$mt:Include module="common_stylesheet"$>
-<$mt:Include module="common_head_js"$>
+<link itemprop="image" href="<$mt:BlogURL encode_html="1"$>images/ogimage.jpg">
+<$mt:Include module="header-script"$>
 </head>
-
-<mt:SetVarBlock name="this_page">TOP</mt:SetVarBlock>
-
-<body id="sitetop">
-
-<$mt:Include module="header"$>
-
-<section id="mainvisual">
-  <div class="container">
-    <h2><img src="<$mt:BlogURL encode_html="1"$>images/main-img.png" alt=""></h2>
-    <p id="main-text">でももももももももももサイト！Movable Typeデザインテーマ「Simple Corporate」のデモサイトです。<br />
-「Simple Corporate」は企業サイトのようなウェブサイトを作成できるレスポンシブ Web デザインを採用したテーマです。
-    </p>
-    <div class="btn-group">
-      <a href="" class="btn btn-primary btn-lg">詳細はこちら&nbsp;<i class="fa fa-arrow-right"></i></a>
-    </div>
+<body> 
+<$mt:Include module="header-menu"$>
+<div class="jumbotron mt-jumbotron jumbotron__indexImg">
+  <div class="container mt-container">
+      <div class="mainlead__block">
+        <h2 class="h2 mt-h2 mainlead__title">
+          Stylish Corporateは<br>
+          企業・組織などに使える<br>
+          ベーステーマです。
+        </h2>
+        <p class="mainlead__caption">企業をイメージしたサイトです。レスポンシブ対応済み。<br>
+          従来のカラムの形式になっていないデザインがお好みの方向け。
+        </p>
+      </div>
   </div>
-</section>
+</div>
 
-<section id="top-about">
-
-<mt:TopLevelFolders>
-<$mt:FolderLabel setvar="fol_name"$>
-  <section class="webpages">
-    <div class="container">
-      <h3><$mt:FolderLabel$></h3>
-      <p class="webpage-lead"><$mt:FolderDescription$></p>
-      <mt:Pages folder="$fol_name" include_subfolders="1" field:top_webpages="1">
-      <mt:If name="__counter__" op="%" value="4" eq="1"><div class="row"></mt:If>
-        <div class="col-sm-4">
-          <h4><i class="fa fa-lg glyphicon fa-tag"></i><$mt:PageTitle$></h4>
-          <p><$mt:PageExcerpt$></p>
-          <p class="page-detail"><a href="<$mt:PagePermalink$>" class="btn btn-primary">詳細を見る</a></p>
-        </div>
-      <mt:If name="__counter__" op="%" value="4" eq="0"></div></mt:If>
-      <mt:If name="__last__"><mt:If name="__counter__" op="%" value="4" ne="0"></div></mt:If></mt:If>
-      </mt:Pages>
-    </div>
+<main>
+  <section class="pagemenu">
+  <$mt:Include module="top-pages"$>
   </section>
-</mt:TopLevelFolders>
+</main>
 
-<mt:Pages no_folder="1" field:top_webpages="1">
-<mt:PagesHeader>
-<section class="webpages">
-  <div class="container">
-</mt:PagesHeader>
-  <mt:If name="__counter__" op="%" value="4" eq="1"><div class="row"></mt:If>
-    <div class="col-sm-4">
-      <h4><i class="fa fa-lg glyphicon fa-tag"></i><$mt:PageTitle$></h4>
-      <p><$mt:PageExcerpt$></p>
-      <p class="page-detail"><a href="<$mt:PagePermalink$>" class="btn btn-primary">詳細を見る</a></p>
+<section class="newsarea">
+  <div class="container-fluid mt-container-fluid">        
+    <div class="col-sm-3">
+      <h3 class="newsarea__title">
+        最新情報
+      </h3>
     </div>
-  <mt:If name="__counter__" op="%" value="4" eq="0"></div></mt:If>
-  <mt:If name="__last__"><mt:If name="__counter__" op="%" value="4" ne="0"></div></mt:If></mt:If>
-<mt:PagesFooter>
-  </div>
-</section>
-</mt:PagesFooter>
-</mt:Pages>
-
-</section>
-
-<section id="top-news">
-  <div class="container">
-    <h3>最新ニュース</h3>
-    <div class="row">
-    <mt:Entries lastn="4">
-      <a href="<$mt:EntryPermalink$>" class="col-sm-3">
-        <mt:If tag="CustomFieldValue" identifier="main_image">
-           <figure><img src="<mt:CustomFieldAsset identifier="main_image"><$mt:AssetThumbnailURL width="320"$></mt:CustomFieldAsset>" alt="<$mt:EntryTitle$>"></figure>
-        <mt:Else>
-        <mt:EntryAssets type="image" sort_order="ascend" limit="1">
-           <figure><img src="<$mt:AssetThumbnailURL width="320"$>" alt="<$mt:EntryTitle$>"></figure>
-           <mt:Else>
-           <figure class="noimage"><span>No image</span></figure>
-        </mt:EntryAssets>
-        </mt:If>
-        <div class="entry-detail">
-          <h1><$mt:EntryTitle$></h1>
-          <p class="entry-excerpt"><$mt:EntryExcerpt$></p>
-        </div>
-      </a>
-    </mt:Entries>
+    <div class="col-sm-9 newsarea__entry">
+      <ul>
+        
+        <mt:Entries limit="3">
+        <li>
+          <a href="<$mt:EntryPermalink$>">
+            <article class="newsentry__item clearfix">
+              <dl>
+                <dt class="newsentry__date">
+                  <time datetime="<$mt:EntryDate format="%Y.%m.%d"$>"><$mt:EntryDate format="%Y.%m.%d"$></time>
+                </dt>
+                <dd class="newsentry__text newsentry__genrename--<$MTCategoryBasename$>">
+                  <mt:EntryIfCategory>
+                  <p class="newsentry__genre genre"><$mt:CategoryLabel$></p>
+                  </mt:EntryIfCategory>
+                  <h3 class="newsentry__title"><$mt:EntryTitle encode_html="1"$></h3>
+                  <p class="newsentry__main"><$mt:EntryBody convert_breaks="1" words="100"$></p>
+                </dd>
+              </dl>            
+            </article>
+          </a>
+        </li>
+        </mt:Entries>
+      </ul>
+      <p class="newsentry__button">
+        <a href="<$mt:BlogRelativeURL$>news.html" class="btn btn-primary mt-btn-primary mt-btn-lg"><span class="glyphicon glyphicon-triangle-right menu-buttonIcon" aria-hidden="true"></span>一覧を見る</a>
+      </p>
     </div>
   </div>
 </section>
 
+<$mt:Include module="go-to-top"$>
 <$mt:Include module="footer"$>
-
-<$mt:Include module="common_bottom_js"$>
-<script src="<$mt:BlogRelativeURL$>js/jquery.tile.min.js"></script>
-<script type="application/javascript">
-$(window).load(function() {
-  $('#top-news .col-sm-3').tile(4);
-  $('.webpages .col-sm-4').tile(3);
-});
+<$mt:Include module="footer-script"$>
+<script src="<$mt:BlogURL encode_html="1"$>js/jquery-match-height.js"></script>
+<script>
+  $(function() {
+    $('.menu-text').matchheight();
+  });
 </script>
-
 </body>
 </html>

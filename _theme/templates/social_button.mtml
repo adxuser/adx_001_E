@@ -1,5 +1,5 @@
-
-  <ul class="clearfix">
+<section class="social-button__wrap clearfix">
+  <ul>
   <mt:If name="socialButtonFacebook">
     <li class="entry-social-facebook">
       <div class="fb-like"
@@ -52,15 +52,14 @@
     <li class="entry-social-twitter">
       <a href="https://twitter.com/share"
         class="twitter-share-button"
+        data-lang="ja"
         <mt:If name="twitterVia">
         data-via="<$mt:Var name='twitterVia'$>"
         </mt:If>
-        data-lang="ja"
         data-count="vertical">ツイート
       </a>
     </li>
   </mt:If>
-
   <mt:If name="socialButtonLine">
   <li class="entry-social-line">
     <span>
@@ -69,7 +68,6 @@
     </span>
   </li>
 </mt:If>
-
   </ul>
 <mt:If name="socialButtonFacebook">
   <script type="text/javascript">
@@ -98,7 +96,6 @@
   }(document, 'script', 'twitter-wjs');
   </script>
 </mt:If>
-
 
 <mt:If name="socialButtonGoogle">
   <script type="text/javascript">
@@ -134,3 +131,4 @@
 <mt:If name="socialButtonLine">
   <script type="text/javascript" src="//media.line.me/js/line-button.js?v=20140411" ></script>
 </mt:If>
+</section>

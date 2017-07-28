@@ -1,9 +1,9 @@
-id: "adx001"
-label: "adx001"
+id: "20170728"
+label: "20170728"
 version: "1.0.0"
 author_link: "https://adxkaihatu.movabletype.io/"
 author_name: "開発テスト"
-description: "adx001"
+description: "20170728"
 class: "blog"
 elements:
   blog_static_files:
@@ -31,6 +31,14 @@ elements:
         options: ''
         required: 0
         type: url
+      bg_top_main:
+        default: 0
+        description: ''
+        name: メイン背景イメージに設定
+        obj_type: asset
+        options: ''
+        required: 0
+        type: checkbox
       entry_pickup:
         default: 0
         description: トップページ中央のPICKUP オススメ部分に表示する場合にチェックを入れます。
@@ -55,6 +63,14 @@ elements:
         options: ''
         required: 0
         type: checkbox
+      imageposition:
+        default: ''
+        description: ''
+        name: メインイメージの配置
+        obj_type: page
+        options: 上に配置,下に配置,背景全体に配置
+        required: 0
+        type: radio
       main_image:
         default: ''
         description: 記事一覧やOGPイメージなどで利用されるメインイメージを指定します。
@@ -95,6 +111,22 @@ elements:
         options: ''
         required: 0
         type: checkbox
+      pageimage:
+        default: ''
+        description: トップページの各ブロックに表示する画像です。（横幅は1280px程度を推奨）
+        name: メインイメージ
+        obj_type: page
+        options: ''
+        required: 0
+        type: asset_image
+      pagetype:
+        default: 個別ページ
+        description: "個別ページ：単体のページのデザインです。（デフォルト）\r\nページ一覧：同じフォルダのページを一覧で表示するデザインです。１つのフォルダにつき、１つまで設定できます。「フォルダのトップに設定」と組み合わせると見出しのようなトップページになります。"
+        name: ページのレイアウト
+        obj_type: page
+        options: 個別ページ,ページ一覧
+        required: 1
+        type: radio
       related_news:
         default: ''
         description: ページに関連する特定のカテゴリのニュースを表示します。
@@ -128,7 +160,7 @@ elements:
         archive:
           category_entry_listing:
             filename: category_entry_listing.mtml
-            label: カテゴリ別記事リスト
+            label: カテゴリ別ニュース記事リスト
             mappings:
               category:
                 archive_type: Category
@@ -136,7 +168,7 @@ elements:
                 preferred: 1
           yearly_entry_listing:
             filename: yearly_entry_listing.mtml
-            label: 年別ブログ記事リスト
+            label: 年別ニュース記事リスト
             mappings:
               yearly:
                 archive_type: Yearly
@@ -148,12 +180,12 @@ elements:
             label: 最新記事のフィード
             outfile: atom.xml
             rebuild_me: 1
-          index_page:
+          main_index:
             filename: index.html.mtml
-            label: インデックスページ
+            label: メインページ
             outfile: index.html
             rebuild_me: 1
-          main_index:
+          news:
             filename: news.html.mtml
             label: ニュース TOP
             outfile: news.html
@@ -173,36 +205,51 @@ elements:
                 file_template: "%y/%m/%-f"
                 preferred: 1
         module:
-          blog-sidemenu:
-            filename: blog-sidemenu.mtml
-            label: blog-sidemenu
-          common_bottom_js:
-            filename: common_bottom_js.mtml
-            label: common_bottom_js
-          common_head_js:
-            filename: common_head_js.mtml
-            label: common_head_js
-          common_stylesheet:
-            filename: common_stylesheet.mtml
-            label: common_stylesheet
           config:
             filename: config.mtml
             label: config
           entry-list:
             filename: entry-list.mtml
             label: entry-list
+          folder_pages:
+            filename: folder_pages.mtml
+            label: folder-pages
           footer:
             filename: footer.mtml
             label: footer
-          header:
-            filename: header.mtml
-            label: header
+          footer-script:
+            filename: footer-script.mtml
+            label: footer-script
+          go-to-top:
+            filename: go-to-top.mtml
+            label: go-to-top
+          header-menu:
+            filename: header-menu.mtml
+            label: header-menu
+          header-script:
+            filename: header-script.mtml
+            label: header-script
+          information:
+            filename: information.mtml
+            label: information
+          news-sidebar:
+            filename: news-sidebar.mtml
+            label: news-sidebar
+          pages-folder-subnavi:
+            filename: pages-folder-subnavi.mtml
+            label: pages-folder-subnavi
           social_button:
             filename: social_button.mtml
             label: social-button
+          top_pages:
+            filename: top_pages.mtml
+            label: top-pages
+          webpage_breadcrumbs:
+            filename: webpage_breadcrumbs.mtml
+            label: webpage-breadcrumbs
         page:
-          page:
-            filename: page.mtml
+          webpage:
+            filename: webpage.mtml
             label: ウェブページ
             mappings:
               page:

@@ -1,34 +1,29 @@
-        <mt:Entries paginate_by="$paginate">
-          <article class="entry clearfix">
-            <mt:If tag="CustomFieldValue" identifier="main_image">
-            <figure><img src="<mt:CustomFieldAsset identifier="main_image"><$mt:AssetThumbnailURL width="240"$></mt:CustomFieldAsset>"></figure>
-            <mt:Else>
-            <mt:EntryAssets type="image" sort_order="ascend" limit="1">
-            <figure><img src="<$mt:AssetThumbnailURL width="240"$>"></figure>
-            </mt:EntryAssets>
-            </mt:If>
-            <div class="entry-meta">
-              <time datetime="<$mt:EntryDate format="%Y-%m-%d"$>"><span class="year"><$mt:EntryDate format="%Y"$>年</span><span class="monthday"><$mt:EntryDate format="%b月%e日"$></span></time>
-              <mt:EntryCategories type="primary"><a href="<$mt:CategoryArchiveLink$>" class="category"><$mt:CategoryLabel encode_html="1"$></a></mt:EntryCategories>
-            </div>
-            <h1 class="entrytitle"><a href="<$mt:EntryPermalink$>"><$mt:EntryTitle encode_html="1"$></a></h1>
-            <div class="entry-excerpt">
-              <$mt:EntryExcerpt$>
-            </div>
-            <div class="pagemore">
-              <a href="<$mt:EntryPermalink$>" class="btn btn-primary">この記事の詳細を見る</a>
-            </div>
-          </article><!-- /.entry -->
-          <mt:EntriesFooter>
-          <nav class="page-navigation">
-            <ul class="page-navigation-list">
-              <mt:PaginationHasPrevious>
-              <li class="page-navigation-list-item page-navigation-prev"><a href="<$mt:PaginationPreviousURL$>" rel="prev">前の<$mt:GetVar name="paginate"$>件</a></li>
-              </mt:PaginationHasPrevious>
-              <mt:PaginationHasNext>
-              <li class="page-navigation-list-item page-navigation-next"><a href="<$mt:PaginationNextURL$>" rel="next">次の<$mt:GetVar name="paginate"$>件</a></li>
-              </mt:PaginationHasNext>
-            </ul>
-          </nav>
-          </mt:EntriesFooter>
-        </mt:Entries>
+<mt:Entries paginate_by="$paginate">
+
+<article class="newslist__item">
+  <a href="<$mt:EntryPermalink$>">
+    <div class="newsdata__wrap genre_<$MTCategoryBasename$> clearfix">
+      <p class="date"><$mt:EntryDate format="%Y.%m.%d"$></p>
+      <p class="genre"><mt:EntryCategories type="primary">
+      <$mt:CategoryLabel encode_html="1"$></mt:EntryCategories></p>
+    </div>
+    <dl class="newstext__wrap">
+      <dt><h4 class="newstext__title"><$mt:EntryTitle encode_html="1"$></h4></dt>
+      <dd><$mt:EntryBody convert_breaks="1" words="150"$></dd>
+    </dl>
+  </a>
+</article>
+
+<mt:EntriesFooter>
+<mt:PaginationHasPrevious>
+<p class="newslist__prevbutton">
+<a class="btn btn-primary mt-btn-primary mt-btn-lg" href="<$mt:PaginationPreviousURL$>"><span class="glyphicon glyphicon-triangle-left menu-buttonIcon" aria-hidden="true"></span>前の<$mt:GetVar name="paginate"$>件</a>
+</p>
+</mt:PaginationHasPrevious>
+<mt:PaginationHasNext>
+<p class="newslist__nextbutton">
+<a class="btn btn-primary mt-btn-primary mt-btn-lg" href="<$mt:PaginationNextURL$>"><span class="glyphicon glyphicon-triangle-right menu-buttonIcon" aria-hidden="true"></span>次の<$mt:GetVar name="paginate"$>件</a>
+</p>
+</mt:PaginationHasNext>
+</mt:EntriesFooter>
+</mt:Entries>

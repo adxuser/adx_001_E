@@ -1,90 +1,70 @@
 <!DOCTYPE html><$mt:Include module="config" strip_linefeeds="1"$>
 <html lang="<$mt:BlogLanguage$>" itemscope itemtype="http://schema.org/WebPage">
-<head>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
 <meta charset="<$mt:PublishCharset$>">
-<title><$mt:ArchiveTitle$> | ニュース | <$mt:BlogName encode_html="1"$></title>
-<meta name="description" content="<$mt:BlogName$>のニュース。<$mt:ArchiveTitle$>のアーカイブページです。">
-<meta name="keywords" content="<$mt:GetVar name="meta_keywords"$>ニュース,<$mt:ArchiveTitle$>">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<title><$mt:ArchiveTitle$> | <$mt:BlogName encode_html="1"$></title>
+<meta name="description" content="<$mt:ArchiveTitle$>のニュース">
+<meta name="keywords" content="<$mt:GetVar name="meta_keywords"$>">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="shortcut icon" href="<$mt:BlogURL encode_html="1"$>images/favicon.ico">
 <link rel="start" href="<$mt:BlogURL encode_html="1"$>">
 <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="<$mt:Link template="feed_recent"$>">
 <$mt:CanonicalLink$>
+
 <!-- Open Graph Protocol -->
 <meta property="og:type" content="article">
 <meta property="og:locale" content="<$mt:BlogLanguage setvar="blog_lang"$><mt:If name="blog_lang" eq="ja">ja_JP<mt:Else><$mt:Var name="blog_lang"$></mt:If>">
-<meta property="og:title" content="<$mt:ArchiveTitle$> | ニュース | <$mt:BlogName encode_html="1"$>">
+<meta property="og:title" content="<$mt:ArchiveTitle$> | <$mt:BlogName encode_html="1"$>">
 <meta property="og:url" content="<$mt:ArchiveLink encode_html="1"$>">
-<meta property="og:description" content="<$mt:BlogName$>のニュース。<$mt:ArchiveTitle$>のアーカイブページです。">
+<meta property="og:description" content="<$mt:ArchiveTitle$>のニュース">
 <meta property="og:site_name" content="<$mt:BlogName encode_html="1"$>">
-<meta property="og:image" content="<$mt:BlogURL encode_html="1"$>images/ogimage.png">
+<meta property="og:image" content="<$mt:BlogURL encode_html="1"$>images/ogimage.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@<$mt:Var name='twitterVia'$>">
 <meta name="twitter:title" content="<$mt:BlogName encode_html="1"$>">
 <meta name="twitter:description" content="<$mt:BlogDescription remove_html="1" encode_html="1"$>">
-<meta name="twitter:image" content="<$mt:BlogURL encode_html="1"$>images/ogimage.png">
+<meta name="twitter:image" content="<$mt:BlogURL encode_html="1"$>images/ogimage.jpg">
 <!-- Microdata -->
-<meta itemprop="description" content="<$mt:BlogName$>のニュース。<$mt:ArchiveTitle$>のアーカイブページです。">
-<link itemprop="url" href="<$mt:ArchiveLink encode_html="1"$>">
-<link itemprop="image" href="<$mt:BlogURL encode_html="1"$>images/ogimage.png">
-<$mt:Include module="common_stylesheet"$>
-<$mt:Include module="common_head_js"$>
+<meta itemprop="description" content="<$mt:ArchiveTitle$>のニュース">
+<link itemprop="url" href="<$mt:BlogURL encode_html="1"$>">
+<link itemprop="image" href="<$mt:BlogURL encode_html="1"$>images/ogimage.jpg">
+<$mt:Include module="header-script"$>
 </head>
 
-<body id="top">
+<body>
+  <$mt:Include module="header-menu"$>
 
-<mt:SetVarBlock name="this_page">blog</mt:SetVarBlock>
-
-<$mt:Include module="header"$>
-
-<section id="localnavi">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <nav role="navigation" class="breadcrumb">
-          <ul class="clearfix">
-            <li class="home"><a href="<$mt:BlogRelativeURL$>"><i class="fa fa-home fa-lg"></i></a></li>
-            <li><a href="<$mt:BlogRelativeURL$>news.html">ニュース</a></li>
-            <li><span><$mt:ArchiveTitle$></span></li>
-          </ul>
-        </nav>
-      </div>
+  <div class="UnderlayerJumbotron UnderlayerJumbotron__newsimg">
+    <div class="Jumbotron__bg">
     </div>
-  </div>
-</section>
-
-<section id="mainvisual-lower">
-<div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <h2><i class="fa fa-book"></i>ニュース</h2>
+    <div class="container mt-container">
+      <div class="mainlead__block">
+          <h2 class="h2 mt-h2 mainlead__title">
+            ニュース
+          </h2>
       </div>
-    </div>
-  </div>
-</section>
+    </div><!-- /.container -->
+  </div><!-- /.jumbotron -->
 
-<div id="content">
-  <div class="container">
-    <div class="row-fluid">
-      <div class="col-sm-9" id="blog-primary-content">
-        <h1 class="page-title"><$mt:ArchiveTitle$>アーカイブ</h1>
-        <div id="entry-list">
-<$mt:Include module="entry-list"$>
-        </div>
-        <div class="holder"></div>
-      </div><!-- /primary-content -->
-      <aside class="col-sm-3 pull-right" id="sidebar">
-<$mt:Include module="blog-sidemenu"$>
-      </aside><!-- sidebar -->
+<div class="container-fluid mt-container-fluid">
+  <div class="row mt-row">
+    <div class="col-sm-10 col__right">
+      <main class="newslist">
+        <h2 class="newslist__title"><$mt:ArchiveTitle$></h2>
+        <$mt:Include module="entry-list"$>
+      </main>
+    </div>
+    
+    <div class="col-sm-2 col__left">
+      <$mt:Include module="news-sidebar"$>
     </div>
   </div>
 </div>
-
+    
+<$mt:Include module="go-to-top"$>
 <$mt:Include module="footer"$>
 
-<$mt:Include module="common_bottom_js"$>
-
+<$mt:Include module="footer-script"$>
 </body>
 </html>

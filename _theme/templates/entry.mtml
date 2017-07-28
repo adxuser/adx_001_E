@@ -1,115 +1,106 @@
 <!DOCTYPE html><$mt:Include module="config" strip_linefeeds="1"$>
 <html lang="<$mt:BlogLanguage$>" itemscope itemtype="http://schema.org/WebPage">
-<head>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
 <meta charset="<$mt:PublishCharset$>">
-<title><$mt:EntryTitle$> | <$mt:BlogName encode_html="1"$></title>
-<meta name="description" content="<$mt:EntryExcerpt$>">
-<meta name="keywords" content="<$mt:GetVar name="meta_keywords"$><$mt:EntryKeywords$>">
-<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="<$mt:BlogDescription remove_html="1" encode_html="1"$>">
+<meta name="keywords" content="<$mt:GetVar name="meta_keywords"$>">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><$mt:EntryTitle encode_html="1"$> | <$mt:BlogName encode_html="1"$></title>
 <link rel="shortcut icon" href="<$mt:BlogURL encode_html="1"$>images/favicon.ico">
 <link rel="start" href="<$mt:BlogURL encode_html="1"$>">
 <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="<$mt:Link template="feed_recent"$>">
 <$mt:CanonicalLink$>
+
 <!-- Open Graph Protocol -->
-<meta property="og:type" content="article">
 <meta property="og:locale" content="<$mt:BlogLanguage setvar="blog_lang"$><mt:If name="blog_lang" eq="ja">ja_JP<mt:Else><$mt:Var name="blog_lang"$></mt:If>">
-<meta property="og:title" content="<$mt:EntryTitle$> | <$mt:BlogName encode_html="1"$>">
+<meta property="og:title" content="<$mt:EntryTitle encode_html="1"$> | <$mt:BlogName encode_html="1"$>">
+<meta property="og:type" content="article">
 <meta property="og:url" content="<$mt:EntryPermalink encode_html="1"$>">
-<meta property="og:description" content="<$mt:EntryExcerpt$>">
+<meta property="og:image" content="<mt:If tag="CustomFieldValue" identifier="main_image_entry"><mt:CustomFieldAsset identifier="main_image_entry"><$mt:AssetThumbnailURL width="1200"$></mt:CustomFieldAsset><mt:Else><mt:EntryAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL width="1200"$><mt:Else><$mt:BlogURL encode_html="1"$>images/ogimage.jpg</mt:EntryAssets></mt:If>">
+<meta property="og:description" content="<$mt:EntryExcerpt encode_html="1"$>">
 <meta property="og:site_name" content="<$mt:BlogName encode_html="1"$>">
-<meta property="og:image" content="<mt:If tag="CustomFieldValue" identifier="main_image"><mt:CustomFieldAsset identifier="main_image"><$mt:AssetThumbnailURL width="1200"$></mt:CustomFieldAsset><mt:Else><mt:EntryAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL width="1200"$><mt:Else><$mt:BlogURL encode_html="1"$>images/ogimage.png</mt:EntryAssets></mt:If>">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@<$mt:Var name='twitterVia'$>">
 <meta name="twitter:title" content="<$mt:EntryTitle encode_html="1"$>">
 <meta name="twitter:description" content="<$mt:EntryExcerpt remove_html="1" encode_html="1" words="100"$>">
-<meta name="twitter:image" content="<mt:If tag="CustomFieldValue" identifier="main_image"><mt:CustomFieldAsset identifier="main_image"><$mt:AssetThumbnailURL width="1200"$></mt:CustomFieldAsset><mt:Else><mt:EntryAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL width="1200"$><mt:Else><$mt:BlogURL encode_html="1"$>images/ogimage.png</mt:EntryAssets></mt:If>">
+<meta name="twitter:image" content="<mt:If tag="CustomFieldValue" identifier="main_image_entry"><mt:CustomFieldAsset identifier="main_image_entry"><$mt:AssetThumbnailURL width="1200"$></mt:CustomFieldAsset><mt:Else><mt:EntryAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL width="1200"$><mt:Else><$mt:BlogURL encode_html="1"$>images/ogimage.jpg</mt:EntryAssets></mt:If>">
+
 <!-- Microdata -->
-<meta itemprop="description" content="<$mt:EntryExcerpt$>">
+<meta itemprop="description" content="<$mt:EntryExcerpt encode_html="1"$>">
 <link itemprop="url" href="<$mt:EntryPermalink encode_html="1"$>">
-<link itemprop="image" href="<mt:If tag="CustomFieldValue" identifier="main_image"><mt:CustomFieldAsset identifier="main_image"><$mt:AssetThumbnailURL width="1200"$></mt:CustomFieldAsset><mt:Else><mt:EntryAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL width="1200"$><mt:Else><$mt:BlogURL encode_html="1"$>images/ogimage.png</mt:EntryAssets></mt:If>">
-<$mt:Include module="common_stylesheet"$>
-<$mt:Include module="common_head_js"$>
+<link itemprop="image" href="<mt:If tag="CustomFieldValue" identifier="main_image_entry"><mt:CustomFieldAsset identifier="main_image_entry"><$mt:AssetThumbnailURL width="1200"$></mt:CustomFieldAsset><mt:Else><mt:EntryAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL width="1200"$><mt:Else><$mt:BlogURL encode_html="1"$>images/ogimage.jpg</mt:EntryAssets></mt:If>">
+<$mt:Include module="header-script"$>
 </head>
 
-<body id="top">
-
-<mt:SetVarBlock name="this_page">blog</mt:SetVarBlock>
-
-<$mt:Include module="header"$>
-
-<section id="localnavi">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <nav role="navigation">
-          <ul class="breadcrumbs">
-            <li class="home"><a href="<$mt:BlogRelativeURL$>"><i class="fa fa-home fa-lg"></i></a></li>
-            <li><a href="<$mt:BlogRelativeURL$>news.html">ニュース</a></li>
-            <mt:ParentCategories exclude_current="1">
-            <mt:If tag="CategoryCount">
-            <li><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel encode_html="1"$></a></li>
-            <mt:Else>
-            <li><$mt:CategoryLabel encode_html="1"$></li>
-            </mt:If>
-            </mt:ParentCategories>
-            <li><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel encode_html="1"$></a></li>
-            <li><span><$mt:EntryTitle encode_html="1"$></span></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
+<body>
+<$mt:Include module="header-menu"$>
+<div class="UnderlayerJumbotron UnderlayerJumbotron__newsimg">
+  <div class="Jumbotron__bg">
   </div>
-</section>
-
-<section id="mainvisual-lower">
-<div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <h2><i class="fa fa-book"></i>ニュース</h2>
-      </div>
+  <div class="container mt-container">
+    <div class="mainlead__block">
+        <h2 class="h2 mt-h2 mainlead__title">
+          ニュース
+        </h2>
     </div>
-  </div>
-</section>
+  </div><!-- /.container -->
+</div><!-- /.jumbotron -->
 
-<div id="content">
-  <div class="container">
-    <div class="row-fluid">
-      <div class="col-sm-9" id="blog-primary-content">
-        <article id="entry-detail">
-          <div class="entry-meta">
-            <time datetime="<$mt:EntryDate format="%Y-%m-%d"$>"><span class="year"><$mt:EntryDate format="%Y"$>年</span><span class="monthday"><$mt:EntryDate format="%b月%e日"$></span></time>
-            <mt:EntryCategories type="primary"><a href="<$mt:CategoryArchiveLink$>" class="category"><$mt:CategoryLabel$></a></mt:EntryCategories>
-          </div>
-          <h1 class="entrytitle"><$mt:EntryTitle$></h1>
-          <div id="entry-body">
-            <$mt:EntryBody$>
-            <$mt:EntryMore$>
-          </div>
-
-          <!--SNS-->
-
-          <section id="entry-social-buttons" class="entry-social-buttons">
-            <$mt:Include module="social-button"$>
-          </section>
-
-          <!--/SNS-->
-
-
-
-        </article>
-      </div><!-- /primary-content -->
-      <aside class="col-sm-3 pull-right" id="sidebar">
-        <$mt:Include module="blog-sidemenu"$>
-      </aside><!-- sidebar -->
+<div class="container-fluid mt-container-fluid">
+  <div class="row mt-row">
+    <div class="col-sm-10 col__right">
+      <main class="wysiwyg newsMain">
+        <div class="newsdata__wrap wysiwyg__detial clearfix genre_<$MTCategoryBasename$>">
+          <p class="date"><time datetime="<$mt:EntryDate format="%Y-%m-%d"$>"><span class="year"><$mt:EntryDate format="%Y"$>.</span><span class="monthday"><$mt:EntryDate format="%b.%e"$></span></time></p>
+          <p class="genre"><mt:EntryCategories type="primary">
+          <$mt:CategoryLabel encode_html="1"$></mt:EntryCategories></p>
+        </div>
+        <div>
+          <h4><$mt:EntryTitle encode_html="1"$></h4>
+          <p>
+              <$mt:EntryBody$>
+              <$mt:EntryMore$>
+        </p>
+      </div>
+      </main>
+        <$mt:Include module="social-button"$>
+    </div>
+    
+    <div class="col-sm-2 col__left">
+      <$mt:Include module="news-sidebar"$>
     </div>
   </div>
 </div>
 
-<$mt:Include module="footer"$>
+  <$mt:Include module="go-to-top"$>
+  
+  <section class="pankuzu">
+    <div class="container mt-container">
+      <div class="row mt-row">
+        <div class="columns medium-12">
+          <nav role="navigation">
+            <ul class="breadcrumbs">
+              <li class="home"><a href="<$mt:BlogRelativeURL$>">トップ</a></li>
+              <li><a href="<$mt:BlogRelativeURL$>news.html">ニュース</a></li>
+              <mt:ParentCategories exclude_current="1">
+              <mt:If tag="CategoryCount">
+              <li><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel encode_html="1"$></a></li>
+              <mt:Else>
+              <li><$mt:CategoryLabel encode_html="1"$></li>
+              </mt:If>
+              </mt:ParentCategories>
+              <li><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel encode_html="1"$></a></li>
+              <li><span><$mt:EntryTitle encode_html="1"$></span></li>
+            </ul>
+          </nav>
+         </div>
+       </div>
+    </div>
+  </section>
 
-<$mt:Include module="common_bottom_js"$>
-
+  <$mt:Include module="footer"$>
 </body>
+<$mt:Include module="footer-script"$>
 </html>

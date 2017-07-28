@@ -1,0 +1,51 @@
+<aside class="news-sidemenu">
+  <mt:ArchiveList archive_type="Individual" lastn="3">
+    <mt:ArchiveListHeader>
+    <h3 class="news-sidemenu__subtitle">最新記事</h3>
+      <ul class="nav side-entry__wrap">
+    </mt:ArchiveListHeader>
+      <li>
+      <a href="<$mt:ArchiveLink encode_html="1"$>"><date datetime="<$mt:EntryDate format="%Y.%m.%d"$>"><$mt:EntryDate format="%Y.%m.%d"$></date><p><$mt:ArchiveTitle$></p></a>
+      </li>
+    <mt:ArchiveListFooter>
+    </ul>
+    </mt:ArchiveListFooter>
+  </mt:ArchiveList>
+  <mt:ArchiveList archive_type="Category">
+    <mt:ArchiveListHeader>
+    <h3 class="news-sidemenu__subtitle">カテゴリ</h3>
+      <ul class="nav side-entry__wrap category">
+          <mt:TopLevelCategories>
+          <mt:If tag="CategoryCount">
+          <li><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel encode_html="1"$>(<$mt:ArchiveCount$>)</a>
+          <mt:Else>
+          <li><p class="nolink"><$mt:CategoryLabel encode_html="1"$></p>
+          </mt:If>
+          <mt:SubCategories>
+          <mt:SubCatIsFirst><ul class="submenu"></mt:SubCatIsFirst>
+          <mt:If tag="CategoryCount">
+          <li class="catdepth-<$mt:CategoryDepth$>"><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel encode_html="1"$>(<$mt:ArchiveCount$>)</a>
+          <mt:Else>
+          <li class="catdepth-<$mt:CategoryDepth$>"><p class="nolink"><$mt:CategoryLabel encode_html="1"$></p>
+          </mt:If>
+          <$mt:SubCatsRecurse$></li>
+          <mt:SubCatIsLast></ul></mt:SubCatIsLast>
+          </mt:SubCategories>
+          </li>
+          </mt:TopLevelCategories>
+      </ul>
+    </mt:ArchiveListHeader>
+  </mt:ArchiveList>
+
+  <mt:ArchiveList archive_type="Yearly">
+    <mt:ArchiveListHeader>
+      <h3 class="news-sidemenu__subtitle">年別</h3>
+      <ul class="nav side-entry__wrap">
+    </mt:ArchiveListHeader>  
+      <li><a href="<$mt:ArchiveLink encode_html="1"$>">
+      <$mt:ArchiveTitle$> (<$mt:ArchiveCount$>)</a></li>
+    <mt:ArchiveListFooter>
+      </ul>
+    </mt:ArchiveListFooter>
+  </mt:ArchiveList>
+</aside>

@@ -1,0 +1,21 @@
+<mt:Pages limit="4" sort_order="ascend" field:webpage_top="1">
+<mt:PagesHeader>
+<div class="row mt-row">
+</mt:PagesHeader>
+  <div class="col-sm-6 pagemenu__bgwrap" <mt:If tag="CustomFieldValue" identifier="main_image_page">style="background-image: url(<mt:CustomFieldAsset identifier="main_image_page"><$mt:AssetThumbnailURL width="800"$></mt:CustomFieldAsset>)"</mt:If>>
+    <mt:If tag="CustomFieldValue" identifier="main_image_page">
+      <div class="pagemenu__bg"><!--黒背景--></div>
+    </mt:If>
+    <article class="pagemenu__textwrap">  
+
+      <h3 class="pagemenu__title"><$mt:PageTitle encode_html="1"$></h3>
+      <p class="pagemenu__text" data-mh="my-group"><$mt:EntryExcerpt words="500"$></p>
+      <p class="pagemenu__button">
+        <a href="<$mt:PagePermalink$>" class="btn btn-primary mt-btn-primary mt-btn-lg"><span class="glyphicon glyphicon-triangle-right pagemenu__buttonIcon" aria-hidden="true"></span>詳しく見る</a>
+      </p>            
+    </article>
+  </div>
+<mt:PagesFooter>
+</div>
+</mt:PagesFooter>
+</mt:Pages>

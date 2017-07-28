@@ -1,20 +1,132 @@
 <footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6" id="footer-logoarea">
-        <p id="copyright">&copy;Example, Ltd.</p>
+  <div class="footer__wrap clearfix">
+    <div class="container-fluid mt-container-fluid footerArea_wrap"> 
+      <div class="col-sm-3 footerlogo__wrap">
+        <h3 class="footerlogo__img"><img src="<$mt:BlogRelativeURL$>images/footerlogo.png" alt="<$mt:BlogName encode_html="1"$>"></h3>
+        <p class="footerlogo__tel"><a href="tel:<$mt:Var name="telnum"$>"><$mt:Var name="telnum"$></a></p>
+        <div class="footer__searchBox">
+          <script>
+            (function() {
+              var cx = '<$mt:Var name='googlesearch'$>';
+              var gcse = document.createElement('script');
+              gcse.type = 'text/javascript';
+              gcse.async = true;
+              gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(gcse, s);
+            })();
+          </script>
+          <gcse:search></gcse:search>
+        </div>
       </div>
-    <mt:Pages field:footer_menu="1">
-      <mt:PagesHeader>
-      <nav class="col-sm-6" id="footer-navi" role="navigation">
-        <ul class="pull-right">
-      </mt:PagesHeader>
-          <li><a href="<$mt:PagePermalink$>"><$mt:PageTitle$></a></li>
-      <mt:PagesFooter>
-        </ul>
+      
+      <div class="col-sm-9 footer-menu">
+      <nav>
+        <div id="content">
+          <ul class="footer-menu__wrap clearfix">
+          <li>
+            <dl class="footer-menu__column">
+              <dt><a href="<$mt:BlogRelativeURL$>"><span class="glyphicon glyphicon-triangle-right menu-buttonIcon icon" aria-hidden="true"></span>トップ</a></dt>
+              <dd></dd>
+            </dl>
+          </li>
+          
+          <li>
+            <dl class="footer-menu__column">
+              <dt><a href="<$mt:BlogRelativeURL$>news.html"><span class="glyphicon glyphicon-triangle-right menu-buttonIcon icon" aria-hidden="true"></span>ニュース</a></dt>
+                    <mt:TopLevelCategories>
+                    <mt:If tag="CategoryCount">
+                    <dd class="firstmenu"><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel encode_html="1"$>(<$mt:ArchiveCount$>)</a>
+                    <mt:Else>
+                    <dd class="firstmenu"><p class="nolink"><$mt:CategoryLabel encode_html="1"$></p>
+                    </mt:If>
+                    <mt:SubCategories>
+                    <mt:SubCatIsFirst><dd class="submenu"></mt:SubCatIsFirst>
+                    <mt:If tag="CategoryCount">
+                    <dd class="catdepth-<$mt:CategoryDepth$>"><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel encode_html="1"$>(<$mt:ArchiveCount$>)</a>
+                    <mt:Else>
+                    <dd class="catdepth-<$mt:CategoryDepth$>"><p class="nolink"><$mt:CategoryLabel encode_html="1"$></p>
+                    </mt:If>
+                    <$mt:SubCatsRecurse$></dd>
+                    <mt:SubCatIsLast></dd></mt:SubCatIsLast>
+                    </mt:SubCategories>
+                  </dd>
+                    </mt:TopLevelCategories>
+            </dl>
+          </li>        
+          
+          <mt:TopLevelFolders>
+            <mt:IfNonZero tag="MTFolderCount">
+              <li>     
+                <dl class="footer-menu__column depth-<$mt:FolderDepth$>">
+                  
+                  <mt:SetVarBlock name="pages"><mt:Pages sort_order="ascend" field:folder_top="1" limit="1">1</mt:Pages></mt:SetVarBlock>
+                    <mt:If name="pages" eq="1">
+                    <mt:Pages sort_order="ascend" field:folder_top="1" limit="1">
+                      <dt>
+                      <a href="<$mt:PagePermalink$>"><span class="glyphicon glyphicon-triangle-right menu-buttonIcon icon" aria-hidden="true"></span><$mt:FolderLabel encode_html="1"$></a>
+                      </dt>
+                    </mt:Pages>
+                    <mt:Else>
+                      <dt class="no-check">
+                      <span class="glyphicon glyphicon-triangle-right menu-buttonIcon icon" aria-hidden="true"></span><$mt:FolderLabel encode_html="1"$>
+                      </dt>
+                    </mt:If>
+                            
+                <mt:Pages sort_order="ascend" field:folder_top="0">
+                <mt:SetVarBlock name="top"><$mt:CustomFieldValue identifier="folder_top"$></mt:SetVarBlock>  
+                  <dd class="submenu">
+                      <a href="<$mt:PagePermalink$>"><span class="glyphicon glyphicon-triangle-right menu-buttonIcon icon" aria-hidden="true"></span><$MTPageTitle$></a>
+                  </dd>
+                </mt:Pages>
+              </dl>
+              
+              <mt:SubFolders> 
+              <dl class="footer-menu__column footer-menu__column--depth<$mt:FolderDepth$>">
+              <mt:Pages sort_order="ascend" field:folder_top="1">
+                <dt>
+                <a href="<$mt:PagePermalink$>"><span class="glyphicon glyphicon-triangle-right menu-buttonIcon icon" aria-hidden="true"></span><$mt:FolderLabel encode_html="1"$></a>
+                </dt>
+              </mt:Pages>
+              <mt:Pages sort_order="ascend" field:folder_top="0">
+                <dd class="submenu">
+                    <a href="<$mt:PagePermalink$>"><span class="glyphicon glyphicon-triangle-right menu-buttonIcon icon" aria-hidden="true"></span><$MTPageTitle$></a>
+                </dd>
+              </mt:Pages>
+            </dl>
+            
+            <$mt:SubFolderRecurse$>
+            </mt:SubFolders>
+              </li>
+              </mt:IfNonZero>
+            </mt:TopLevelFolders>            
+          
+          <mt:Pages no_folder="1" sort_order="ascend">
+            <li>
+              <dl class="footer-menu__column">
+                <dt><a href="<$mt:PagePermalink$>"><span class="glyphicon glyphicon-triangle-right menu-buttonIcon icon" aria-hidden="true"></span><$mt:PageTitle encode_html="1"$></a>
+                </dt>
+                <dd></dd>
+              </dl>
+            </li>
+          </mt:Pages>
+            </ul>
+        </div>
       </nav>
-      </mt:PagesFooter>
-    </mt:Pages>
+        <div class="footer-sns clearfix">
+          <ul class="footer-sns__wrap">
+          <mt:If name="facebook"><li class="footer-sns__facebook"><a href="<$mt:GetVar name="facebook"$>"><i class="fa fa-facebook"></i></a></li></mt:If>
+          
+          <mt:If name="twitter"><li class="footer-sns__twitter"><a href="<$mt:GetVar name="twitter"$>"><i class="fa fa-twitter"></i></a></li></mt:If>
+        </ul>
+        </div>
+      </div>
     </div>
   </div>
 </footer>
+
+<section class="copyaera">
+  <div class="container mt-container"> 
+    <small>&copy; 2016 Six Apart</small>
+  </div>
+</section>
